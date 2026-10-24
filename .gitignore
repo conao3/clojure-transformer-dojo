@@ -1,0 +1,8 @@
+/.cpcache
+/target
+/.clj-kondo/*
+!/.clj-kondo/config.edn
+/.lsp
+/.nrepl-port
+/models/*
+!/models/.gitkeep

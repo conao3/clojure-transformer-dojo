@@ -1,0 +1,9 @@
+#!/bin/sh
+# transformer-dojo/ の ./dojo を、リポジトリ直下から呼ぶためのラッパー。
+# 配布物がなければ先に setup.sh で展開する
+set -eu
+
+cd "$(dirname "$0")"
+[ -x transformer-dojo/dojo ] || ./setup.sh
+cd transformer-dojo
+exec ./dojo "$@"

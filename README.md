@@ -16,11 +16,12 @@
 
 ```bash
 nix develop
-make setup   # 配布物を transformer-dojo/ に展開
+make setup   # 配布物を transformer-dojo/ に展開 (./dojo も未展開なら自動で行う)
 make init    # dojo init (session: Japanese, language: Clojure)
-cd transformer-dojo
 ./dojo       # セットアップページが開く。OpenCode を使う場合はここ
 ```
+
+リポジトリ直下の `./dojo` は `transformer-dojo/dojo` のラッパーで、`./dojo test` `./dojo viz` `./dojo generate ...` もそのまま使える。
 
 Claude Code など手元のエージェントを使う場合は `transformer-dojo/` で起動し、次を送る。
 

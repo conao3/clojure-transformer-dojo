@@ -1,1 +1,14 @@
-{}
+{
+  "tokenize": ["bb", "--classpath", "lib", "bin/parts.clj", "tokenize"],
+  "softmax": ["bb", "--classpath", "lib", "bin/parts.clj", "softmax"],
+  "rmsnorm": ["bb", "--classpath", "lib", "bin/parts.clj", "rmsnorm"],
+  "rope": ["bb", "--classpath", "lib", "bin/parts.clj", "rope"],
+  "attention_head": ["bb", "--classpath", "lib", "bin/parts.clj", "attention_head"],
+  "mha": ["bb", "--classpath", "lib", "bin/parts.clj", "mha"],
+  "ffn": ["bb", "--classpath", "lib", "bin/parts.clj", "ffn"],
+  "block": ["bb", "--classpath", "lib", "bin/parts.clj", "block"],
+  "forward": ["bb", "--classpath", "lib", "bin/parts.clj", "forward"],
+  "autoregress": ["bb", "--classpath", "lib", "bin/parts.clj", "autoregress"],
+  "sample": ["bb", "--classpath", "lib", "bin/parts.clj", "sample"],
+  "generate": ["bb", "--classpath", "lib", "bin/generate.clj"]
+}

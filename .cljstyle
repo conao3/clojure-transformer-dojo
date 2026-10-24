@@ -1,5 +1,5 @@
 {:files
- {:ignore #{"target" ".direnv" ".git"}}
+ {:ignore #{"target" ".direnv" ".git" "transformer-dojo/docs" "transformer-dojo/tests"}}
 
  :rules
  {:indentation {:list-indent 1}

@@ -1,22 +1,26 @@
 .PHONY: all
 all:
 
-.PHONY: repl
-repl:
-	clj -M:dev:repl
+.PHONY: setup
+setup:
+	./setup.sh
+
+.PHONY: init
+init:
+	cd transformer-dojo && ./dojo init --lang clojure --session-lang Japanese
 
 .PHONY: test
 test:
-	clojure -M:dev -m cognitect.test-runner
+	cd transformer-dojo && ./dojo test
 
 .PHONY: lint
 lint:
-	clj-kondo --lint src test
+	clj-kondo --lint transformer-dojo/work
 
 .PHONY: fmt
 fmt:
-	cljstyle fix
+	cljstyle fix transformer-dojo/work
 
 .PHONY: clean
 clean:
-	rm -rf .cpcache target
+	rm -rf .cpcache

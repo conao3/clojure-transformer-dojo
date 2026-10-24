@@ -1,9 +1,8 @@
 # AGENTS.md
 
-Clojure で Transformer の推論 (forward pass とトークン生成) をスクラッチで書くハンズオン用リポジトリ。README.md に背景がある。
+Clojure で Transformer の推論をスクラッチで書くハンズオン用リポジトリ。背景は README.md。
 
-- 学習はしない。約 1500 万パラメータの小さなモデルの推論だけを書く。GPU 不要。
-- 重みとトークナイザは `models/` に置く (git 管理外)。形式は当日の配布物に従う。
-- 外部の数値計算ライブラリは使わず、行列積・softmax・RMSNorm/LayerNorm・attention・サンプリングを自分で書く。読む人が追えることを優先し、最適化は動いてから。
-- ビルドと実行は `nix develop` の中で `make test` / `clojure -M -m transformer-dojo.core`。
-- 慣習は agents-share `notes/lang/clojure.md` に従う。
+- ワークショップの作業ディレクトリは `transformer-dojo/`。エージェントはそこで起動し、`transformer-dojo/AGENTS.md` と `.agents/skills/dojo/SKILL.md` に従う。コードは `transformer-dojo/work/` にだけ書く。
+- `transformer-dojo/` の配布物 (`dojo`、`model/`、`tests/golden/` など) は編集しない。`make setup` で取り直せる。
+- Clojure は babashka で動かす。`deps.edn` を作らず、`clojure.data.json` を使う。
+- 慣習は agents-share `notes/lang/clojure.md` に従う。`make lint` / `make fmt` は `work/` が対象。

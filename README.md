@@ -3,18 +3,32 @@
 「あなたの言語で書く Transformer」(Frog イベント、2026-10-24、登壇: LayerX Ryosuke さん) のハンズオン用リポジトリ。元ネタは YAPC::Tokyo 2026 の「Transformerをあなたの言語で―60分で書くLLM推論、Transformer道場」。
 
 - イベントページ: http://frogagent.com/events/transformer-dojo-talk-2026-10/
-- 題材: 1500 万パラメータ規模の小さなモデルの **推論** を好きな言語 (ここでは Clojure) で書く。学習は含まない。GPU 不要。
-- 進め方: コーディングエージェントにコードを書かせ、読んで、動かして、質問する。
+- 特設サイト (配布物のダウンロード): https://transformer-dojo.opsbr.dev/
+- 題材: 約 1500 万パラメータの Llama 系モデルの **推論** を Clojure で書く。学習は含まない。GPU 不要。コーディングエージェントが 11 個のパーツ (`tokenize` から `sample` まで) を書き、人間はそれを読む。
 
 ## 構成
 
-- `src/transformer_dojo/`: 実装
-- `test/transformer_dojo/`: テスト
-- `models/`: 重み・トークナイザ置き場 (git 管理外。当日の配布物を置く)
+- `transformer-dojo/`: 特設サイトの配布物 (`make setup` で展開。git 管理外)。`./dojo` コマンド、モデル、テスト、エージェント用スキルが入る
+- `transformer-dojo/work/`: エージェントが書くコード。**ここだけ git 管理**
+- `flake.nix`: JDK 21、clojure、babashka、clj-kondo、cljstyle。dojo の Clojure ランタイムは babashka (`bb`)
 
-## 開発
+## 手順
 
 ```bash
 nix develop
-make test
+make setup   # 配布物を transformer-dojo/ に展開
+make init    # dojo init (session: Japanese, language: Clojure)
+cd transformer-dojo
+./dojo       # セットアップページが開く。OpenCode を使う場合はここ
 ```
+
+Claude Code など手元のエージェントを使う場合は `transformer-dojo/` で起動し、次を送る。
+
+> Run the dojo. Session: Japanese. Language: Clojure.
+
+進捗は `./dojo status`、確認は `./dojo test`、書いたコードを読むのは `./dojo viz`、物語の生成は `./dojo generate "There was a big tree with"`。
+
+## メモ
+
+- 出力する JSON は `clojure.data.json` (babashka 同梱)。`deps.edn` は使わない。
+- 特設サイトのパスコード (OpenRouter の支援クレジット用) はこのリポジトリに書かない。

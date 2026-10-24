@@ -1,8 +1,11 @@
 /.cpcache
-/target
 /.clj-kondo/*
 !/.clj-kondo/config.edn
 /.lsp
 /.nrepl-port
-/models/*
-!/models/.gitkeep
+
+# transformer-dojo/ は特設サイトの配布物 (make setup で展開)。自分で書く work/ だけ追跡する
+/transformer-dojo/*
+!/transformer-dojo/work/
+/transformer-dojo/work/**/target/
+__pycache__/
